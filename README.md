@@ -1,4 +1,4 @@
-## Teachbase ([http://teachbase.ru]) test app
+## Teachbase test app
 
 ### Requirements
 
@@ -10,7 +10,7 @@
 
 ### Wanna use Vagrant?
 
-Use [https://github.com/webils/tb_vagrant_ansible.git].
+Use (https://github.com/webils/tb_vagrant_ansible.git)[https://github.com/webils/tb_vagrant_ansible.git].
 
 ### Other
 
