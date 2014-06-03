@@ -40,5 +40,5 @@ group :development, :test do
 end
 
 # profiling/debugging
-gem 'rack-mini-profiler'
+# gem 'rack-mini-profiler'
 gem 'pry-byebug', group: [:development, :test]
