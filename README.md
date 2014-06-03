@@ -1,6 +1,6 @@
-== README
+## Teachbase ([http://teachbase.ru]) test app
 
-=== Requirements
+### Requirements
 
 * Ruby >= 2.0
 
@@ -8,11 +8,11 @@
 
 * Redis
 
-=== Wanna use Vagrant?
+### Wanna use Vagrant?
 
 Use [https://github.com/webils/tb_vagrant_ansible.git].
 
-=== Other
+### Other
 
 To login into application use credentials in _seed.rb_.
 
