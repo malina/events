@@ -1,0 +1,8 @@
+.leftbar
+  .bg
+  = form_tag nil, remote: true 
+    .fixed-wrapper
+      .header
+        = yield :leftbar_header
+    .content
+      = yield :leftbar_content

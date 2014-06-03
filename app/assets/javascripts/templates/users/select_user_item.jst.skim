@@ -1,0 +1,6 @@
+li.item
+  .field.name title="#{@name}"
+    | #{@name}
+  .field.email title="#{@email}"
+    | #{@email}
+  i.fa.fa-check

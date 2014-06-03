@@ -1,0 +1,1 @@
+json.meeting @meeting, :id, :started_at_utc, :name, :start_time

@@ -1,0 +1,18 @@
+== content_for :popup
+  .show-meeting.popup.is-hidden.show_meeting_popup
+    .title Meeting info
+    .form.show_meeting_form 
+      .field
+        = label_tag 'meeting_name', 'Title', class: 'field-label'
+        = text_area 'meeting_name', '', '', class: 'is-readonly'
+      .field
+        = label_tag 'meeting_start_time', 'Start time', class: 'field-label'
+        = text_input 'meeting_start_time', '', '', class: 'is-readonly'
+      .field
+        = label_tag 'meeting_url', 'URL', class: 'field-label'
+        = text_input 'meeting_url', '', '', class: 'is-readonly'
+    .list-header
+        = search_field 'q', 'search users', class: 'search-participants'
+    .pi.list-container.users-list.show_meeting_list 
+      ul.list
+      

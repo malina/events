@@ -1,0 +1,12 @@
+li.item
+  input type="hidden" name="participants[][id]" value="#{@id}"
+  .field.name title="#{@name}"
+    | #{@fullname}
+  .field.email title="#{@email}"
+    | #{@email}
+  .field.role
+    - if @role>0
+      = 'presenter'
+      input type="hidden" name="participants[][role]" value="1"
+    - else
+      input type="hidden" name="participants[][role]" value="0"

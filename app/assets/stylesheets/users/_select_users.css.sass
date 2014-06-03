@@ -1,0 +1,46 @@
+$popup-users-content-w: $popup-users-w - $sidebar-width - $sidebar-margin
+$popup-users-field-w: ($popup-users-content-w/2)
+
+.select-users
+  width: $popup-users-w
+  min-height: $popup-users-min-h
+  overflow: auto
+  margin-bottom: $header-height
+  .sidebar
+    width: $sidebar-width
+    margin: 0 $sidebar-margin 0 0
+    float: left
+  .content
+    float: right
+    width: $popup-users-content-w
+    .controls
+      position: relative
+      height: 50px
+      .list-filter
+      .button-add
+        position: absolute
+        right: 0      
+        &::before
+          content: '\f00c'
+          font-family: FontAwesome
+          margin-right: 8px
+    .list-header
+      .search-field
+        .text-input
+          width: ($popup-users-field-w - $search-total-pad) 
+    .list
+      .item
+        .email
+          width: ($popup-users-field-w - 30) // 30 - pad for check icon
+        .name
+          padding-left: 10px
+          width: ($popup-users-field-w - 10)
+        .fa
+          display: none
+          position: absolute
+          right: 10px
+          top: 8px
+          color: $grey-text
+        &.is-disabled
+          .fa
+            display: inline-block

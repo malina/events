@@ -1,0 +1,5 @@
+.list-filter class="#{ klass }"
+  - options.each do |item|
+    span.item data-type=item[:filter] class="#{ item[:selected] ? 'is-selected' : nil} " 
+      span.item-link 
+        =item[:label] 

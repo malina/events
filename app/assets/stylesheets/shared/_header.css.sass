@@ -1,0 +1,48 @@
+header
+  height: $header-height
+  z-index: $header-z
+  width: 100%
+  user-select: none
+  background: $grey-bg
+  border-bottom: 1px solid $header-border-bg
+  margin-bottom: 10px
+  .content
+    width: $main-width
+    margin: 0 auto
+    .logo
+      float: left
+      display: block
+      width: 37px
+      height: 31px
+      background-image: image-url('logo.png')
+      background-size: 37px 31px
+      background-repeat: no-repeat
+      margin-top: 12px 
+      margin-right: 17px
+    nav
+      float: left
+      .menu-link
+        +font($font-size-menu,$menu-text)
+        width: auto
+        padding: 21px 17px ($header-height - 36) 17px
+        display: inline-block
+        text-decoration: none
+        transition: border-color 200ms
+        border-bottom: 1px solid $header-border-bg
+        &:hover
+          border-color: lighten(#4d4d4d,20%)
+          border-width: 2px
+          padding-bottom: ($header-height - 37)
+          transition: none
+        &:active
+          color: darken($menu-text,10%)
+        &.is-active
+          border-width: 2px
+          padding-bottom: ($header-height - 37)
+          color: $black
+          border-color: #4d4d4d
+
+.is-overlayed
+  header
+    position: fixed
+    top: 0

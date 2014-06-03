@@ -1,0 +1,36 @@
+== content_for :leftbar_header 
+  h1.title Edit meeting
+  .form
+    = hidden_field_tag 'meeting[id]'
+    .field
+      = label_tag  'meeting[name]', "Title", class: 'field-label'
+      = text_input 'meeting[name]', "New Meeting", 'name-field'
+    .datetime.inline
+      .field.date.inline
+        = label_tag 'meeting[started_at_date]', "Title", class: 'field-label'
+        = text_input 'meeting[started_at_date]', '', ' date-field'
+      .field.time.inline
+        = label_tag 'meeting[started_at_time]', "Time", class: 'field-label'
+        = text_input 'meeting[started_at_time]', '', 'time-field'
+    .actions.inline
+      = link_to "Cancel", "#", class: 'button inline button-cancel cancel-btn' 
+      = link_to "Save", "#", class: 'button inline button-save'
+== content_for :leftbar_content
+  .fixed-wrapper
+    .content-header
+      .content-actions
+        h1.title.inline Participants
+        = link_to "Add participants", "#", class: 'button inline button-cancel add-users-btn'
+      .list-header
+        = search_field 'q', "search users", class: 'search-users'
+        .actions
+          .buttons.edit_action_group
+            .icon-button.edit-btn
+              =fa_icon 'pencil'
+            .icon-button.del-btn
+              =fa_icon 'trash-o'
+  .pi.list-container.users-list.participants_list
+    ul.list
+
+== content_for :popup
+  == render 'edit_role_popup', options: [{:value => 1, :label => 'listener'},{:value => 2, :label => 'presenter'}]

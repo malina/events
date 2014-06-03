@@ -1,0 +1,63 @@
+$first-column-w: 160px
+
+$title-normal-w: 550px
+
+$title-running-w: 400px
+
+
+.main
+  .content
+    .search-field
+      .text-input
+        width: 304px
+    .meeting-datetime
+      width: $first-column-w
+      padding-left: 10px
+  .list
+    .item
+      &.is-running
+        background: $item-running
+        .meeting-datetime
+          padding-left: 0
+          padding-right: 10px
+        .meeting-title
+          width: $title-running-w
+        .running
+          padding: 4px 10px
+          color: $white
+          background: $blue-link
+        .right-triangle
+          width: 0
+          height: 0
+          border-bottom: 11px solid transparent
+          border-top: 12px solid transparent
+          border-left: 9px solid $blue-link
+          font-size: 0
+          line-height: 0
+          display: inline-block
+          position: absolute
+          top: 8px
+        .buttons
+          line-height: $item-height
+          float: right
+          .button
+            display: inline-block
+            margin-right: 4px
+        &.is-selected
+          background: $item-selected
+      &.is-finished
+        .field
+          opacity: .5
+          transition: opacity 200ms
+        &:hover
+          .field
+            opacity: 1
+      .meeting-datetime
+        font-weight: bold
+      .meeting-title
+        width: $title-normal-w
+        .link
+          text-decoration: none
+          color: $black
+          &:hover
+            color: $blue-link

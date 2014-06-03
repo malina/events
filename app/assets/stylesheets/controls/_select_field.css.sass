@@ -1,0 +1,17 @@
+.select-field
+  +font($font-size-bold,$menu-text)
+  appearance: none
+  background: $white
+  background-image: image-url("select-icon.png")
+  background-size: 30px 30px
+  background-repeat: no-repeat
+  background-position: right
+  border-radius: 2px
+  border: 1px solid $grey-line
+  height: 30px
+  user-select: text
+  padding: 0 $search-right-pad 0 $search-left-pad
+  margin: 0
+  transition: box-shadow 300ms
+  &:focus
+    box-shadow: 0 0 2px 2px $grey-line

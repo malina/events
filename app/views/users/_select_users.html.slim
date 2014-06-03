@@ -1,0 +1,13 @@
+== content_for :popup
+  .select-users.popup.is-hidden.select_users_popup
+    .sidebar
+       h1.title Select participants
+    .content
+      .controls
+        = link_to 'Add', "#{}", class: 'button inline button-save button-add is-disabled'
+        = search_field 'q', "search users", class: 'search-select-users'
+      .pi.list-container.users-list.users_select_list 
+        ul.list
+        .load-more
+          a.link href="#" load more
+

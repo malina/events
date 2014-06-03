@@ -1,0 +1,10 @@
+== content_for :popup
+  .select_roles.popup.is-hidden.select_roles
+    .title Select roles
+    .form.select_roles_form
+      = label_tag :role, 'Role', class: 'field-label'
+      select.select-field name="role"
+        option value="" None
+        - options.each do |option|
+          option value="#{option[:value]}" =option[:label]
+      = link_to "Save", "#", class: 'button inline button-save'

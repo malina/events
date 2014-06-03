@@ -1,0 +1,5 @@
+li.item 
+  .field.meeting-datetime #{@start_time}
+  .field.meeting-title 
+    a.link href="#" title="#{@name}" data-id="#{@id}"
+      | #{@name}

@@ -1,0 +1,58 @@
+$leftbar-header-h: 190px
+
+$leftbar-list-header-h: 82px
+
+$leftbar-list-header-pad: 20px
+
+$leftbar-search-width: 204px
+
+.leftbar
+  .header
+    z-index: ($fixed+$second)
+    .name-field-input
+      width: ($leftbar-width - $leftbar-pad+18) // 20 - from input padding, 2 - border
+    .datetime
+      .field
+        &.date
+          margin-right: 20px
+        .date-field-input
+          width: 80px
+        .time-field-input
+          width: 60px
+    .divider
+      height: 34px
+      top: 14px
+      margin-left: 16px
+    .private
+      margin-left: 10px
+    .actions
+      position: absolute
+      right: 0
+      bottom: 14px
+      .button-cancel
+        margin-right: 10px
+  .hr
+  .content
+    .content-header
+      .title
+        margin-right: 20px
+      .button
+        position: absolute  
+        right: 0
+        top: ($leftbar-list-header-pad - 6)
+    .search-field
+      .text-input
+        width: $leftbar-search-width
+    .progress-wrapper
+      left: ($leftbar-search-width + $search-total-pad + 2) // 2 - borders
+    .list-container
+      margin-top: $leftbar-list-header-h
+    .list
+      .item
+        .name
+          width: ($leftbar-search-width + $search-total-pad - 8)
+          padding-left: 10px
+        .email
+          width: $leftbar-search-width
+        .role
+          color: $red         

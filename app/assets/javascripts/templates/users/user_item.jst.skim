@@ -1,0 +1,11 @@
+li.item
+  .field.name title="#{@name}"
+    | #{@name}
+  .field.email title="#{@email}"
+    | #{@email}
+  .field.age title="#{age}"
+    | #{@age}
+  - if @gender == 0
+    .field.gender title='female' female
+  - else
+    .field.gender title='male' male

@@ -1,0 +1,6 @@
+= javascript_include_tag params[:controller]
+= javascript_tag
+  | app.user = new pi.User(JSON.parse('
+  == render 'api/users/user.json.jbuilder', {item: current_user}
+  | '));
+  | app.page = new pi.controllers.#{ params[:controller].camelize }();

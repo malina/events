@@ -1,0 +1,18 @@
+doctype html
+html lang="#{I18n.locale}"
+  == render 'layouts/dochead'
+  body 
+    .main-progress.progressbar-line
+    == render 'shared/header'
+    .main-wrap  
+      .main
+        = yield
+    == render 'shared/leftbar'
+    == render 'shared/overlays'
+    .popups-container.is-hidden
+      = yield :popup
+    == render 'shared/footer'
+  style
+    | .main-progress{width:30%;}
+  style
+    | .main-progress{width:50%;}

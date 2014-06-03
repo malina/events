@@ -1,0 +1,26 @@
+.sidebar
+  h1.title Users
+  = button_tag "Apply filter", class: 'button apply-btn'
+  .form
+    .field
+      = label_tag  'age', "Age", class: 'field-label'
+      = text_input 'age', "", 'age-field'
+    .field
+        = check_box 'male', 0, 'Male', class: 'is-male-field male-cb'
+    .field
+        = check_box 'female', 0, 'Female', class: 'is-female-field female-cb'
+
+.content
+  .content-header
+    .controls
+      = search_field 'q', 'search users', class: 'search-users'
+    .list-header
+      .headings
+        = sort_button :span, 'Name', class:'heading field name is-sort-desc'
+        = sort_button :span, 'Email', class:'heading field email'
+        = sort_button :span, 'Age', class:'heading field age'
+        = sort_button :span, 'Gender', class:'heading field gender'
+  .list-container.users-list
+    ul.list
+    .load-more
+      a.link href="#" load more

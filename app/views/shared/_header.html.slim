@@ -1,0 +1,7 @@
+style = Rails.application.assets['progressbar.css'].to_s
+header
+  .content
+    = link_to '', '/', class: 'logo', title: 'Meetings'
+    nav
+      a.menu-link href="/meetings" Meetings
+      a.menu-link href="/users" Users

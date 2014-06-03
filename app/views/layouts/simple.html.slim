@@ -1,0 +1,9 @@
+doctype html
+html lang="#{I18n.locale}"
+  == render 'layouts/dochead'
+  body.pi
+    .main-progress.progressbar-line
+    == render 'shared/header'
+    .main
+      = yield
+    == render 'shared/footer'

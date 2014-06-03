@@ -1,0 +1,28 @@
+.sidebar
+  h1.title Meetings
+  = button_tag "Create meeting", class: 'button create-btn'
+.content
+  .content-header
+    .controls
+      = search_field 'q', 'search meetings', class: 'search-meetings'
+    .list-header
+      .headings
+        = sort_button :span, 'Datetime', class:'heading field meeting-datetime is-sort-desc'
+        = sort_button :span, 'Title', class:'heading field meeting-title'
+      .actions
+        .buttons.action_group
+          .icon-button.edit-btn
+            =fa_icon 'pencil'
+          .icon-button.del-btn
+            =fa_icon 'trash-o'
+  .pi.list-container.meetings-list    
+    ul.list
+    .load-more
+      a.link href="#" load more
+
+== content_for :leftbar    
+  == render 'edit_form'
+
+== render 'users/select_users'
+== render 'show_popup'
+== render 'shared/confirm'

@@ -1,0 +1,4 @@
+= "Are you sure to delete meeting"
+span.name
+  = " #{@name}"
+|?

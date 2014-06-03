@@ -1,0 +1,14 @@
+== content_for :leftbar_header 
+  h1.title =t('users.create')
+== content_for :leftbar_content
+  .fixed-wrapper
+    .pi.list-container@add_users_list [
+            data-component="list" 
+            data-plugins="searchable selectable jst_renderer"
+            data-option-renderer="templates/users/add_user_item" 
+            data-option-select="radio check" 
+            data-option-scroll-object="window"
+            data-event-selected="@action_group.show"
+            data-event-selection-cleared="@action_group.hide"
+            ]
+      ul.list

@@ -1,0 +1,62 @@
+.leftbar
+  width: 100%
+  position: absolute
+  top: $header-height
+  bottom: 0
+  z-index: $light-overlay-content-z
+  transition: all .5s $easeInOutQuint
+  left: -100%
+  margin-left: -$leftbar-width
+  .bg
+    padding-right: ($leftbar-pad+10)
+    width: 100%
+    height: 100%
+    position: absolute
+    background: $white
+    border-right: 1px solid $header-border-bg
+  .fixed-wrapper
+    width: $leftbar-width
+    margin-left: auto
+    position:relative
+  .fixed
+    width: $leftbar-width
+  .title
+    @extend %h1_title 
+    margin-bottom: 12px
+    position: relative
+  .header 
+    width: $leftbar-width
+    margin-right: 0
+    margin-left: auto
+    padding-top: $main-pad-top
+  .hr
+    position: fixed
+    width: 100%
+    height: 1px
+    background: $white
+    z-index: $second
+    border-bottom: 1px solid $grey-line
+  .content
+    width: $leftbar-width
+    margin-right: 0
+    margin-left: auto
+    padding-top: $main-pad-top
+    .content-header
+      position: relative
+  
+.is-overlayed
+  .leftbar
+    position: fixed
+
+@media only screen and (max-width: $main-width)
+  .leftbar
+    width: $main-width
+    left: -($main-width - $leftbar-width)
+    margin-left: 0
+    &.is-hidden
+      left: -$main-width
+    .bg
+      position: absolute
+    .hr
+      position: absolute
+    
