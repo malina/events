@@ -32,7 +32,6 @@ $ ->
     leftbar.find('.content .list').empty()
     if current_meeting.participants
       leftbar.find('.content .list').append(JST['templates/meetings/show_participant_item'](p)) for p in current_meeting.participants
-    console.log current_meeting
     leftbar.css({left: "-50%", "margin-left":"80px"})
 
   hide_leftbar = ->
@@ -78,7 +77,6 @@ $ ->
       
       meetings_list = _.compact(_.union(meetings_list, data.meetings))
       list.append(JST['templates/meetings/meeting_item'](m)) for m in meetings_list
-      console.log meetings_list
 
       list.find('.meeting-title .link').on 'click', (e) ->
           show_meeting_info $(e.target).data('id')
@@ -151,7 +149,6 @@ $ ->
     $('.leftbar .cancel-btn').one 'click', hide_leftbar
 
   list.on 'click', '.item', (e) ->
-    console.log $(this).data('id')
     set_editable_meeting($(this).data('id'))
     toggle_list_select($(e.currentTarget))
     return
@@ -167,6 +164,7 @@ $ ->
   load_meetings()
 
 
+  # ----------
   # Сортировка
 
   $('.main .heading').on 'click', (e) ->
@@ -203,6 +201,6 @@ $ ->
 
     )
 
-    #meeting = {}
-    #added_users = []
-    console.log(meeting)
+    meeting = {}
+    added_users = []
+
