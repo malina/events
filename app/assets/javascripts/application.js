@@ -11,5 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require underscore
 //= require_tree ./templates
 //= require main_progress
+//= require core

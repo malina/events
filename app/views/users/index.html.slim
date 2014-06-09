@@ -16,10 +16,10 @@
       = search_field 'q', 'search users', class: 'search-users'
     .list-header
       .headings
-        = sort_button :span, 'Name', class:'heading field name is-sort-desc'
-        = sort_button :span, 'Email', class:'heading field email'
-        = sort_button :span, 'Age', class:'heading field age'
-        = sort_button :span, 'Gender', class:'heading field gender'
+        = sort_button :span, 'Name', class:'heading field name is-sort-desc', "data-name" => 'name'
+        = sort_button :span, 'Email', class:'heading field email', "data-name" => 'email'
+        = sort_button :span, 'Age', class:'heading field age', "data-name" => 'age'
+        = sort_button :span, 'Gender', class:'heading field gender', "data-name" => 'gender'
   .list-container.users-list
     ul.list
     .load-more

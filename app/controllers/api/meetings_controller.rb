@@ -38,7 +38,7 @@ module Api
     private
       def create_participants
         return if not participants_params
-        participants_params.each { |p| @meeting.add_user(p[:id],p[:role]) }
+        participants_params.each_with_index { |p,i| @meeting.add_user(p[i][:id], 1) }
         @meeting.save
       end
 

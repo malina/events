@@ -11,18 +11,35 @@ $ ->
   popup_users = $('.select_users_popup')
   popup_users_list = $('.select_users_popup .users-list ul')
 
+  meetings_list = []
 
 
   current_page = 1
   users_page = 1
 
-  show_leftbar  = ->
+  editable_meeting = {}
+  current_meeting = {}
+
+  added_users = []
+
+  show_leftbar  = () ->
     overw.removeClass('is-hidden')
-    leftbar.animate({left: "-50%", "margin-left":"80px"},500)
+
+    added_users = []
+
+    leftbar.find('.meeting-form').empty()
+    leftbar.find('.meeting-form').append(JST['templates/meetings/meeting_form'](current_meeting.meeting))
+    leftbar.find('.content .list').empty()
+    if current_meeting.participants
+      leftbar.find('.content .list').append(JST['templates/meetings/show_participant_item'](p)) for p in current_meeting.participants
+    console.log current_meeting
+    leftbar.css({left: "-50%", "margin-left":"80px"})
 
   hide_leftbar = ->
     overw.addClass('is-hidden')
-    leftbar.animate({left: "-100%", "margin-left":"-560px"},500)
+    leftbar.css({left: "-100%", "margin-left":"-560px"})
+
+  # нужно оставить анимацию в одном месте - либо в js, либо  в css. Я за css анимацию.
 
 
   show_popup  = (popup) ->
@@ -45,19 +62,24 @@ $ ->
   toggle_list_select = (item) ->
     if item.hasClass('is-selected')
       item.removeClass 'is-selected'
-      $('.main .list-header .actions .buttons').animate({top: "30px"},500)
+      $('.main .list-header .actions .buttons').css({top: "30px"})
+      #$('.main .list-header .actions .buttons').animate({top: "30px"},500)
+      # нужно оставить анимацию в одном месте - либо в js, либо  в css. Я за css анимацию.
     else
       list.find('.item').removeClass 'is-selected'
       item.addClass 'is-selected'
-      $('.main .list-header .actions .buttons').animate({top: "0"},500)
+      $('.main .list-header .actions .buttons').css({top: "0"})
 
 
 
   load_meetings = ->
     return if current_page == 0
     $.ajax(url: '/api/meetings.json', type: "GET", dataType: "json", data: {page: current_page, per_page: 300}, success: (data) ->
-      list.append(JST['templates/meetings/meeting_item'](m)) for m in data.meetings
       
+      meetings_list = _.compact(_.union(meetings_list, data.meetings))
+      list.append(JST['templates/meetings/meeting_item'](m)) for m in meetings_list
+      console.log meetings_list
+
       list.find('.meeting-title .link').on 'click', (e) ->
           show_meeting_info $(e.target).data('id')
           return
@@ -82,7 +104,6 @@ $ ->
 
   show_meeting_info = (id) ->
     $.ajax(url: "/api/meetings/#{id}.json", type: "GET", dataType: "json", success: (data) ->
-      
       popup_info.find("textarea[name=meeting_name]").val(data.meeting.name)
       popup_info.find("input[name=meeting_start_time]").val(data.meeting.start_time)
       popup_info.find("input[name=meeting_url]").val(data.meeting.url)
@@ -119,7 +140,9 @@ $ ->
     return
 
   $('.main .edit-btn').on 'click', ->
-    confirm('pending')
+    show_leftbar()
+    overw.one 'click', hide_leftbar
+    $('.leftbar .cancel-btn').one 'click', hide_leftbar
     return
 
   $('.main .sidebar .create-btn').on 'click', ->
@@ -128,6 +151,8 @@ $ ->
     $('.leftbar .cancel-btn').one 'click', hide_leftbar
 
   list.on 'click', '.item', (e) ->
+    console.log $(this).data('id')
+    set_editable_meeting($(this).data('id'))
     toggle_list_select($(e.currentTarget))
     return
 
@@ -140,3 +165,44 @@ $ ->
     return
 
   load_meetings()
+
+
+  # Сортировка
+
+  $('.main .heading').on 'click', (e) ->
+    type = $(this).data('name')
+    
+    if (window.Sorting.current_sorting_type != type) 
+      window.Sorting.current_sorting_type = null
+    tmp_list = window.Sorting.sort(type, meetings_list)
+
+    list.html('')
+    list.append(JST['templates/meetings/meeting_item'](m)) for m in tmp_list
+
+    return
+
+  set_editable_meeting = (id) ->
+    $.ajax(url: "/api/meetings/#{id}.json", type: "GET", dataType: "json", success: (data) ->
+      current_meeting = data
+    )
+
+
+
+
+  $("body").on "click", ".users_select_list .item", ->
+    id = $(this).data('id')
+    added_users.push({id: id})
+    console.log added_users
+
+  $(".leftbar").on "click", ".button-save", ->
+    meeting =
+      name: $('.name-field-input').val()
+      started_at_date: $('.date-field-input').val()
+      started_at_time: $('.time-field-input').val()
+    $.ajax(url: '/api/meetings', type: "POST", dataType: "json", data: {meeting: meeting, participants: added_users, authenticity_token: window.AUTH_TOKEN}, success: (data) ->
+
+    )
+
+    #meeting = {}
+    #added_users = []
+    console.log(meeting)

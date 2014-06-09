@@ -2,19 +2,19 @@ development:
   adapter: postgresql
   host: localhost
   database: teachbase_dev
-  username: teachbase
-  password: teachbase
+  username: task2014
+  password: 1
 
 test:
   adapter: postgresql
   host: localhost
-  database: teachbase_test
-  username: teachbase
-  password: teachbase
+  database: teachbase_dev
+  # username: task2014
+  # password: 1
 
 production:
   adapter: postgresql
   host: localhost
   database: teachbase
-  username: teachbase
-  password: teachbase
+  # username: task2014
+  # password: 1

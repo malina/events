@@ -1,0 +1,21 @@
+.header
+  h1.title Edit meeting
+  .form
+    input name="meeting[id]" type="hidden" value="#{@id}"/
+    .field
+      label.field-label for="meeting[name]"  Title 
+      .text-input-wrap.name-field
+        input.text-input.name-field-input name="meeting[name]" type="text" value="#{@name}"/
+    .datetime.inline
+      .field.date.inline
+        label.field-label for="meeting[started_at_date]"  Date 
+        .text-input-wrap.date-field
+          input.text-input.date-field-input name="meeting[started_at_date]" type="text" value="#{@start_time}"/
+      .field.time.inline
+        label.field-label for="meeting[started_at_time]"  Time 
+        .text-input-wrap.time-field
+          input.text-input.time-field-input name="meeting[started_at_time]" type="text" value="#{@start_time}"/
+    .actions.inline
+      a.button.inline.button-cancel.cancel-btn href="#"  Cancel
+      a.button.inline.button-save href="#"  Save
+

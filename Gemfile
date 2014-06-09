@@ -25,6 +25,8 @@ gem 'skim'
 gem "font-awesome-rails"
 gem 'jquery-rails'
 
+gem 'underscore-rails'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 

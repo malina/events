@@ -7,8 +7,8 @@
       = search_field 'q', 'search meetings', class: 'search-meetings'
     .list-header
       .headings
-        = sort_button :span, 'Datetime', class:'heading field meeting-datetime is-sort-desc'
-        = sort_button :span, 'Title', class:'heading field meeting-title'
+        = sort_button :span, 'Datetime', class:'heading field meeting-datetime is-sort-desc', "data-name" => 'start_time'
+        = sort_button :span, 'Title', class:'heading field meeting-title', "data-name" => 'name'
       .actions
         .buttons.action_group
           .icon-button.edit-btn

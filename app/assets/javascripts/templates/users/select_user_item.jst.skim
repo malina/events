@@ -1,4 +1,4 @@
-li.item
+li.item data-id="#{@id}"
   .field.name title="#{@name}"
     | #{@name}
   .field.email title="#{@email}"

@@ -4,6 +4,8 @@ $ ->
   over_cont= $('.overlay-dark-container')
   list = $('.users-list ul')
 
+  users_list = []
+
   male_cb = $('.sidebar .male-cb')
   female_cb = $('.sidebar .female-cb')
 
@@ -29,7 +31,9 @@ $ ->
   load_users = ->
     return if current_page == 0
     $.ajax(url: '/api/users.json', type: "GET", dataType: "json", data: {page: current_page, per_page: 300, filter: {age: filter.age, gender: filter.gender}}, success: (data) ->
-      list.append(JST['templates/users/user_item'](u)) for u in data.users
+      users_list = _.compact(_.union(users_list, data.users))
+      list.html('')
+      list.append(JST['templates/users/user_item'](u)) for u in users_list
       
       current_page+=1
       if data.pagination.total_pages == current_page-1
@@ -58,6 +62,7 @@ $ ->
     load_users()
     return
 
+
   $('.sidebar .apply-btn').on 'click', ->
     apply_filter()
 
@@ -82,3 +87,17 @@ $ ->
       checkbox_input.val(1)
 
   load_users()
+
+
+  # Сортировка
+  $('.main .heading').on 'click', (e) ->
+    type = $(this).data('name')
+
+    if (window.Sorting.current_sorting_type != type) 
+      window.Sorting.current_sorting_type = null
+    tmp_list = window.Sorting.sort(type, users_list)
+
+    list.html('')
+    list.append(JST['templates/users/user_item'](u)) for u in tmp_list
+
+    return

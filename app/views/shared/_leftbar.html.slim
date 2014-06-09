@@ -1,8 +1,25 @@
 .leftbar
   .bg
-  = form_tag nil, remote: true 
+  .fixed-wrapper.meeting-form
+  .content
     .fixed-wrapper
-      .header
-        = yield :leftbar_header
-    .content
-      = yield :leftbar_content
+      .content-header
+        .content-actions
+          h1.title.inline Participants
+          = link_to "Add participants", "#", class: 'button inline button-cancel add-users-btn'
+        .list-header
+          = search_field 'q', "search users", class: 'search-users'
+          .actions
+            .buttons.edit_action_group
+              .icon-button.edit-btn
+                =fa_icon 'pencil'
+              .icon-button.del-btn
+                =fa_icon 'trash-o'
+    .pi.list-container.users-list.participants_list
+      ul.list
+  / = form_tag nil, remote: true 
+  /   .fixed-wrapper
+  /     .header
+  /       = yield :leftbar_header
+  /   .content
+  /     = yield :leftbar_content

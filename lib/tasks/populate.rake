@@ -22,6 +22,8 @@ namespace :populate do
         m.add_user! u, [0,1].sample(1)[0]
       end
 
+      puts "--#{count}"
+
       count-=1
     end 
   end
